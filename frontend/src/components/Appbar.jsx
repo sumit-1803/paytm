@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 export const Appbar = ({ user }) => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/signin");
+    };
+
     const getInitials = (user) => {
-        if (!user || !user.firstName || !user.lastName) return "";
+        if (!user) return "";
 
         const { firstName, lastName } = user;
         return `${firstName[0]}${lastName[0]}`;
@@ -8,7 +17,7 @@ export const Appbar = ({ user }) => {
 
     return (
         <div className="shadow h-14 flex justify-between">
-            <img className="ml-4" src="https://pwebassets.paytm.com/commonwebassets/paytmweb/header/images/logo.svg" alt="" />
+            <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/header/images/logo.svg" alt="" />
             <div className="flex flex-col justify-center h-full ml-4">
                 PayTM
             </div>
@@ -21,6 +30,12 @@ export const Appbar = ({ user }) => {
                         {getInitials(user)}
                     </div>
                 </div>
+                <button
+                    onClick={handleLogout}
+                    className="px-4   text-red-500 font-bold rounded-3xl mr-2 hover:bg-red-500 hover:text-white"
+                >
+                    Logout
+                </button>
             </div>
         </div>
     );

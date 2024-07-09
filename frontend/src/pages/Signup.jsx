@@ -20,10 +20,10 @@ export const Signup = () => {
         <Heading label={"Sign up"} />
         <SubHeading label={"Enter your infromation to create an account"} />
         <InputBox onChange={e => {
-          setFirstName(e.target.value);
+          setFirstName(e.target.value.toUpperCase());
         }} placeholder="John" label={"First Name"} />
         <InputBox onChange={(e) => {
-          setLastName(e.target.value);
+          setLastName(e.target.value.toUpperCase());
         }} placeholder="Doe" label={"Last Name"} />
         <InputBox onChange={e => {
           setUsername(e.target.value);
